@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Currency Exchange</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Currency item -->
+    <string name="icon_currency_flag_desc">Country flag</string>
+    <string name="tv_currency_country_name_desc">Country name</string>
+    <string name="tv_currency_rate_desc">Currency rate</string>
+    <!-- Currency item -->
+
+    <string name="tabName_ConvertFrom">Convert From</string>
+    <string name="tabName_ConvertTo">Convert To</string>
+
+    <!-- Action Bar -->
+    <string name="action_edit">Edit</string>
+</resources>

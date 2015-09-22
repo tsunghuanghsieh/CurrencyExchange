@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="layout" name="item_currency">@layout/item_currency_wide</item>
+</resources>
