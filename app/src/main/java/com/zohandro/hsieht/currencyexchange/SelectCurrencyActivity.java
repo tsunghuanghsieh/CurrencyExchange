@@ -2,7 +2,6 @@ package com.zohandro.hsieht.currencyexchange;
 
 import android.app.Activity;
 import android.app.LoaderManager;
-import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
@@ -18,9 +17,6 @@ import android.widget.Toast;
 
 import com.zohandro.hsieht.currencyexchange.data.CurrencyContract;
 import com.zohandro.hsieht.currencyexchange.data.CurrencyContract.CurrencyEntry;
-
-import java.util.ArrayList;
-import java.util.Vector;
 
 /**
  * Created by hsieht on 10/23/2014.
@@ -130,6 +126,13 @@ public class SelectCurrencyActivity extends Activity implements LoaderManager.Lo
                 arrSelected.put(key, bundle.getBoolean(key));
             }
         }
+
+        if (savedInstanceState != null && savedInstanceState.containsKey("TAB_INDEX"))
+        {
+            mnSelectedTab = savedInstanceState.getInt("TAB_INDEX");
+            mTabHost.setCurrentTab(mnSelectedTab);
+        }
+
         getLoaderManager().initLoader(SELECTCURRENCY_LOADER, null, this);
     }
 
@@ -152,6 +155,10 @@ public class SelectCurrencyActivity extends Activity implements LoaderManager.Lo
             bundle.putBoolean(key, arrSelected.get(key));
         }
         outState.putBundle("cbSelection", bundle);
+
+        Log.d(LOG_TAG, "tab index is " + mnSelectedTab);
+        mnSelectedTab = mTabHost.getCurrentTab();
+        outState.putInt("TAB_INDEX", mnSelectedTab);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.zohandro.hsieht.currencyexchange;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -11,9 +10,6 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.Vector;
 
 /**
  * Created by hsieht on 11/2/2014.
@@ -46,8 +42,14 @@ public class SelectCurrencyAdapter extends CursorAdapter {
             String sName = cursor.getString(SelectCurrencyActivity.COL_CURRENCY_NAME);
             viewHolder.cbToCurrency.setText(sCode);
             viewHolder.tv_Currency_Name.setText(sName);
-            if (SelectCurrencyActivity.arrSelected.containsKey(sCode))
+            if (SelectCurrencyActivity.arrSelected.containsKey(sCode)) {
+                Log.d(LOG_TAG, "bindView selected sCode is " + sCode);
                 viewHolder.cbToCurrency.setChecked(SelectCurrencyActivity.arrSelected.get(sCode));
+            }
+            else {
+                Log.d(LOG_TAG, "bindView not selected sCode is " + sCode);
+                viewHolder.cbToCurrency.setChecked(false);
+            }
             viewHolder.cbToCurrency.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
