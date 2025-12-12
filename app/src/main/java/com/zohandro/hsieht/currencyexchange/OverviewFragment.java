@@ -121,27 +121,26 @@ public class OverviewFragment extends Fragment implements LoaderManager.LoaderCa
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId())
-        {
-            case R.id.action_edit:
-                FetchCurrencyTask fetchCurrencyTask = new FetchCurrencyTask(getActivity());
-                fetchCurrencyTask.execute("currencies");
-                // fetchCurrencyTask.execute("rates");
+        int itemId = item.getItemId();
+        if (itemId == R.id.action_edit) {
+            FetchCurrencyTask fetchCurrencyTask = new FetchCurrencyTask(getActivity());
+            fetchCurrencyTask.execute("currencies");
+            // fetchCurrencyTask.execute("rates");
 
-                try {
-                    fetchCurrencyTask.get();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
+            try {
+                fetchCurrencyTask.get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
 
-                Intent intent = new Intent(getActivity().getApplicationContext(), SelectCurrencyActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent(getActivity().getApplicationContext(), SelectCurrencyActivity.class);
+            startActivity(intent);
 
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
         }
     }
 
